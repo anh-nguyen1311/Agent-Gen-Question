@@ -48,11 +48,11 @@ if config:
         f"and {config.max_pages} pages; generate up to {config.max_questions} questions."
     )
 
-    with st.expander("Cost controls", expanded=False):
-        st.write(f"Maximum upload size: {config.max_upload_mb} MB")
-        st.write(f"Maximum PDF pages: {config.max_pages}")
-        st.write(f"Maximum questions per run: {config.max_questions}")
-        st.write("Document AI charges per page and Gemini charges by tokens, so smaller files and fewer questions cost less.")
+    # with st.expander("Cost controls", expanded=False):
+        # st.write(f"Maximum upload size: {config.max_upload_mb} MB")
+        # st.write(f"Maximum PDF pages: {config.max_pages}")
+        # st.write(f"Maximum questions per run: {config.max_questions}")
+        # st.write("Document AI charges per page and Gemini charges by tokens, so smaller files and fewer questions cost less.")
 
     uploaded_file = st.file_uploader(
         f"Upload source file (PDF/DOCX, max {config.max_upload_mb} MB, max {config.max_pages} pages)",
