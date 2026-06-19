@@ -25,7 +25,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.title("Grounded MCQ Generator")
+st.title("MCQ Generator")
 st.write("Upload a PDF or Word .docx file, choose a question count, and generate cited multiple-choice questions.")
 
 try:
@@ -47,12 +47,6 @@ if config:
         f"Limits: upload a PDF or Word .docx file up to {config.max_upload_mb} MB "
         f"and {config.max_pages} pages; generate up to {config.max_questions} questions."
     )
-
-    # with st.expander("Cost controls", expanded=False):
-        # st.write(f"Maximum upload size: {config.max_upload_mb} MB")
-        # st.write(f"Maximum PDF pages: {config.max_pages}")
-        # st.write(f"Maximum questions per run: {config.max_questions}")
-        # st.write("Document AI charges per page and Gemini charges by tokens, so smaller files and fewer questions cost less.")
 
     uploaded_file = st.file_uploader(
         f"Upload source file (PDF/DOCX, max {config.max_upload_mb} MB, max {config.max_pages} pages)",
@@ -95,7 +89,7 @@ if config:
                     )
                     status.update(label=f"Extracted text from {len(pages)} page(s).", state="complete")
 
-                with st.status("Generating grounded questions with Gemini...", expanded=True) as status:
+                with st.status("Generating questions with Gemini...", expanded=True) as status:
                     questions = generate_questions(
                         source_pages=pages,
                         question_count=int(question_count),
